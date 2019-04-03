@@ -1,0 +1,35 @@
+#define is a preprocessor token: the compiler itself will never see it.
+typedef is a compiler token: the preprocessor does not care about it.
+
+
+typedef obeys scoping rules just like variables, whereas define stays valid until the end of the file (or until a matching undef).
+
+If you define something in a header that is included before other headers, the other headers will "see" it too
+
+
+----------------------------------------------------------------------------------------
+#define you can define constants that can be used in compile time. The constants can be used with #ifdef to check how the code is compiled, and specialize certain code according to compile parameters.
+You can also use #define to declare miniature find-and-replace Macro functions.
+
+typedef can be used to give aliases to types (which you could probably do with #define as well), but it's safer because of the find-and-replace nature of #define constants.
+Besides that, you can use forward declaration with typedef which allows you to declare a type that will be used, but isn't yet linked to the file you're writing in.
+
+
+
+
+
+
+
+
+
+typedef is limited to giving symbolic names to types only, where as #define can be used to define alias for values as well, e.g., you can define 1 as ONE, 3.14 as PI, etc.
+
+typedef interpretation is performed by the compiler where #define statements are performed by preprocessor.
+
+#define should not be terminated with semicolon, but typedef should be terminated with semicolon.
+
+#define will just copy-paste the definition values at the point of use, while typedef is actual definition of a new type.
+
+typedef follows the scope rule which means if a new type is defined in a scope (inside a function), then the new type name will only be visible till the scope is there.
+ 
+In case of #define, when preprocessor encounters #define, it replaces all the occurrences, after that (No scope rule is followed).
